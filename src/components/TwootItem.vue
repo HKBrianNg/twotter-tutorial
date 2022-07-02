@@ -1,6 +1,9 @@
 <template>
-<div class="twoot-item">
+<div class="twoot-item" @click="favouriteTwoot(twoot.id)">
     <div class="user-profile_twoot">
+        <div>
+            ID:{{twoot.id}}
+        </div>
         <div class="twoot-item_user">
             @{{username}}
         </div>
@@ -25,12 +28,17 @@ export default {
             type:Object,
             required:true
         }
+    },
+    methods: {
+        favouriteTwoot(id) {
+           this.$emit('favourite',id)
+        }
     }
 };
 
 </script>
 
-<style scoped>
+<style  lang="scss" scoped>
 .twoot-item {
     padding: 20px;
     border-radius: 5px;
@@ -48,4 +56,6 @@ export default {
 .twoot-item_user {
     font-weight: bold;
 }
+
+
 </style>
